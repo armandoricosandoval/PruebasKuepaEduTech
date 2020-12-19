@@ -10,7 +10,6 @@ export default function Dashboard() {
 
   async function handleLogout() {
     setError("")
-
     try {
       await logout()
       history.push("/login")
@@ -27,7 +26,7 @@ export default function Dashboard() {
           {error && <Alert variant="danger">{error}</Alert>}
           <strong>Email:</strong> {currentUser.email}
           <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
-            Update Profile
+            CLASE
           </Link>
         </Card.Body>
       </Card>

@@ -2,14 +2,13 @@ import firebase from "firebase/app"
 import "firebase/auth"
 
 const app = firebase.initializeApp({
-  apiKey: "AIzaSyDKq1xApzsVH2efHRVjikjKVQU9zR5xcPA",
-    authDomain: "talentos-itesa.firebaseapp.com",
-    databaseURL: "https://talentos-itesa.firebaseio.com",
-    projectId: "talentos-itesa",
-    storageBucket: "talentos-itesa.appspot.com",
-    messagingSenderId: "173103881018",
-    appId: "1:173103881018:web:ab28cb980b81c1ddb78e03",
-    measurementId: "G-3S797XTHYK"
+  apiKey: "AIzaSyD-Sb3msmJQEkOoMK_Mu2ZzUkjBwccmiuk",
+  authDomain: "prueba-tecnica-fe343.firebaseapp.com",
+  projectId: "prueba-tecnica-fe343",
+  storageBucket: "prueba-tecnica-fe343.appspot.com",
+  messagingSenderId: "209772558128",
+  appId: "1:209772558128:web:60ceffdc4d4a4e08327af5",
+  measurementId: "G-2GPHQYYE49"
 })
 
 export const auth = app.auth()
