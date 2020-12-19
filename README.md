@@ -1,7 +1,7 @@
 Pruebas Desarrollador Full Stack Java Script de Kuepa EduTech
 
 
-archivo en repositorio GIT HUB Armandoricosandoval@gmail.com
+archivo en repositorio GIT HUB https://github.com/armandoricosandoval/PruebasKuepaEduTech
 
 se clona el repo y se ubican en la carpeta servidor y hacen un npm i y luego en la carpeta front hacer npm i para descargar los modulos.
 
