@@ -6,31 +6,40 @@ import { Form, Button, Card } from "react-bootstrap"
 
 export default function Tutorias({ nombre }) {
 
-  const [mensaje, setMensaje] = useState("");
+  
   const [mensajes, setMensajes] = useState([]);
 
-  useEffect(() => {
-    socket.emit('conect', nombre)
-  }, [nombre])
+  
+
 
   useEffect(() => {
-    socket.on('mensajes', (msg) => {
+    socket.on('message', (msg) => {
       setMensajes([...mensajes, msg])
     })
 
     return () => { socket.off() }
-  }, [mensajes])
+  }, [])
 
   function handleSubmit(e) {
     e.preventDefault();
-    socket.emit('mensage', nombre, mensaje)
+    const body=e.target.value
+    if (e.keyCode === 13 && body) {
+      const message = {
+        body,
+        from: 'Me'
+      }
+      setMensajes([...mensajes, message])
+      socket.emit('message', body)
+      e.target.value = ''
+    }
   }
-
+  
+  
   return (
     <div className="tarjetas"
       style={{
         display: "flex",
-        heigth: "100% !important",
+        heigth: "100% ",
       }}
     >
       <div style={{
@@ -55,16 +64,16 @@ export default function Tutorias({ nombre }) {
         <Card >
           <Card.Body>
             <h2 className="text-center mb-2">Chat grupal</h2>
-            {/* {error && <Alert variant="danger">{error}</Alert>} */}
-            <Form onSubmit={handleSubmit}>
+            <Form >
               <Form.Group id="email">
-                <Form.Label>messages</Form.Label>
-                <div>
-                {mensajes.map((m,i)=> <>
-                <div key={i}> {m.nombre}  </div>
-                <div key={i}> {m.mensaje}  </div>
-                </>  )}
-                </div>
+                <Form.Label>messages</Form.Label>                 
+                { mensajes.map((message, i) => {
+                   return( 
+                   <li key={i}>
+                    <b>{message.from}:{message.body}</b>
+                      </li>)
+                }) 
+                }
               </Form.Group>
             </Form>
           </Card.Body>
@@ -74,8 +83,7 @@ export default function Tutorias({ nombre }) {
             <Form onSubmit={handleSubmit}>
               <Form.Group id="email">
                 <Form.Label>Write</Form.Label>
-                <Form.Control as="textarea" rows={1} 
-                value={mensaje} onChange={e => setMensaje(e.target.value)}/>
+                <Form.Control as="textarea" rows={2} />
               </Form.Group>
               <Button className="w-100" type="submit">
                 Enviar

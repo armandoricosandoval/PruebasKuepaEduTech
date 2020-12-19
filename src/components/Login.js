@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import socket from './socket'
 
 export default function Login( ) {
   const emailRef = useRef()
@@ -25,7 +26,7 @@ export default function Login( ) {
 
     setLoading(false)
   }
-
+socket.emit('conectado', "hola desde cliente")
   return (
     <>
       <Card>
